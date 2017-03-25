@@ -16,7 +16,7 @@ function getStyles(props, context, state) {
   const styles = {
     root: {
       height: inner ? '30%' : '40%',
-      background: timePicker.accentColor,
+      background: timePicker.selectColor,
       width: 2,
       left: 'calc(50% - 1px)',
       position: 'absolute',
