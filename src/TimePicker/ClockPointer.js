@@ -28,7 +28,7 @@ function getStyles(props, context, state) {
     mark: {
       boxSizing: 'content-box',
       background: timePicker.selectTextColor,
-      border: `4px solid ${timePicker.accentColor}`,
+      border: `4px solid ${timePicker.selectColor}`,
       display: hasSelected && 'none',
       width: 7,
       height: 7,

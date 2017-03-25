@@ -62,7 +62,7 @@ function getStyles(props, context) {
   ];
 
   if (props.isSelected) {
-    styles.root.backgroundColor = muiTheme.timePicker.accentColor;
+    styles.root.backgroundColor = muiTheme.timePicker.selectColor;
     styles.root.color = muiTheme.timePicker.selectTextColor;
   }
 
