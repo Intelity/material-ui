@@ -196,6 +196,10 @@ class TextField extends Component {
     /**
      * Number of rows to display when multiLine option is set to true.
      */
+    readonly: PropTypes.bool,
+    /**
+     * If true, the textfield is read only. 
+     */
     rows: PropTypes.number,
     /**
      * Maximum number of rows to display when
@@ -245,6 +249,7 @@ class TextField extends Component {
     disabled: false,
     floatingLabelFixed: false,
     multiLine: false,
+    readonly: false,
     fullWidth: false,
     type: 'text',
     underlineShow: true,
@@ -358,6 +363,9 @@ class TextField extends Component {
     if (this.props.disabled) {
       return;
     }
+    if (this.props.readonly) {
+      return;
+    }
     this.setState({isFocused: true});
     if (this.props.onFocus) {
       this.props.onFocus(event);
@@ -397,6 +405,7 @@ class TextField extends Component {
       onBlur, // eslint-disable-line no-unused-vars
       onChange, // eslint-disable-line no-unused-vars
       onFocus, // eslint-disable-line no-unused-vars
+      readonly,
       style,
       type,
       underlineDisabledStyle,
@@ -431,6 +440,7 @@ class TextField extends Component {
         htmlFor={inputId}
         shrink={this.state.hasValue || this.state.isFocused || floatingLabelFixed}
         disabled={disabled}
+        readonly={readonly}
       >
         {floatingLabelText}
       </TextFieldLabel>
@@ -440,6 +450,7 @@ class TextField extends Component {
       id: inputId,
       ref: (elem) => this.input = elem,
       disabled: this.props.disabled,
+      readonly: this.props.readonly,
       onBlur: this.handleInputBlur,
       onChange: this.handleInputChange,
       onFocus: this.handleInputFocus,
@@ -504,6 +515,7 @@ class TextField extends Component {
         {underlineShow ?
           <TextFieldUnderline
             disabled={disabled}
+            readonly={readonly}
             disabledStyle={underlineDisabledStyle}
             error={!!this.state.errorText}
             errorStyle={errorStyle}
